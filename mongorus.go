@@ -44,7 +44,7 @@ func NewAuthMongoHook(mongoUrl, db, collection string, auth options.Credential) 
 func (h *MongoHook)Fire(entry *logrus.Entry) error{
 	data := make(logrus.Fields)
 	data["Level"] = entry.Level.String()
-	data["Time"] = entry.Time
+	data["Time"] = entry.Time.Format("2006-01-02 15:04:05")
 	data["Message"] = entry.Message
 
 	for k, filed := range entry.Data {
